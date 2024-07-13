@@ -146,7 +146,7 @@ If everything is fine, you will get this message back:
     "errors": null
 }
 ```
-You will also receive an email (make sure you use a legitimate email address) when registering) with this message:
+You will also receive an email (make sure you use a legitimate email address when registering) with this message:
 ```
 mp3 file_id: 6691f8a5ed737d568756efb7 is now ready!
 ```
