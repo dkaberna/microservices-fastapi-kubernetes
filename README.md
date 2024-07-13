@@ -81,7 +81,7 @@ Expected result:
 }
 ```
 
-## Register user:
+#### Register user:
 
 To test user registration, use a valid email address and create a password:
 
@@ -107,7 +107,7 @@ If everything is fine, you will get this message back:
     "errors": null
 }
 ```
-## User Authentication:
+#### User Authentication:
 You can then authenticate using the `login` route based on the credentials you created just now.
 
     $ curl -X 'POST' \
@@ -128,7 +128,7 @@ If everything is fine, you will get this message back which contains your JWT:
 }
 ```
  
-## Video Conversion:
+#### Video Conversion:
 To test the video conversion to mp3 process, you will need to download a video from YouTube, and then run this using the JWT you obtained from authenticating:
 
     $ curl -X 'POST' \
@@ -153,9 +153,9 @@ mp3 file_id: 6691f8a5ed737d568756efb7 is now ready!
 
 Note: the ID above will be unique every time you upload a new video.
 
-## MP3 Download:
+#### MP3 Download:
 
 You can then download the newly converted mp3 file by using the mp3 file_id sent to your email using the GET API route:
 
-  $ curl -X 'GET' \
+    $ curl -X 'GET' \
         -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjA4NDQwMzYsInN1YiI6InRlc3QtdXNlcjEifQ.-fPU-sXU-OJFKznilgJ5sbJFwUxIJdo5syVOjgnvTwM' http://mp3converter.com/api/v1/user/download/6691f8a5ed737d568756efb7
