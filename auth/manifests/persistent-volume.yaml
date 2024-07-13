@@ -1,0 +1,35 @@
+# # PersistentVolume provides storage resources in the cluster
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: postgres-volume
+#   labels: # Labels are applied to the ConfigMap to help identify and organize resources
+#     type: local
+#     app: postgres
+# spec:
+#   # Manual specifies the StorageClass for this PersistentVolume
+#   # The StorageClass named “manual” indicates that provisioning of the storage is done manually
+#   storageClassName: manual
+#   capacity:
+#     storage: 10Gi # Specifies the desired capacity of the PersistentVolume
+#   accessModes:
+#     - ReadWriteMany # Allows multiple Pods to read and write to the volume simultaneously.
+#   hostPath:
+#     path: /data/postgresql # Refers to a location on the host where the data for the PersistentVolume will be stored
+
+
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-db-pv
+  labels:
+    type: local
+spec:
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 2Gi
+  hostPath:
+    path: "/data/postgres-db-pv"

@@ -1,0 +1,44 @@
+version: '1.0'
+
+services:
+  app:
+    container_name: auth
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    volumes:
+      - ./:/app
+    ports:
+      - 5000:5000
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=${POSTGRES_PORT}
+    networks:
+      - network1
+    depends_on:
+      - db
+
+  db:
+    container_name: auth-db
+    build:
+      context: .
+      dockerfile: ./docker/db/Dockerfile
+    restart: always
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - network1
+
+networks:
+  network1:
+    name: microservice-network
+    external: true
+
+volumes:
+  postgres_data:

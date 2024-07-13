@@ -1,0 +1,46 @@
+version: '1.0'
+
+services:
+  app:
+    container_name: gateway
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    volumes:
+      - ./:/app
+    ports:
+      - 8080:8080
+    networks:
+      - network1
+    depends_on:
+      - mongo
+
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo-db
+    ports:
+      - 27017:27017
+    environment:
+      # - MONGO_INITDB_DATABASE=test
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    volumes:
+      # seeding scripts
+      - ./mongo-entrypoint:/docker-entrypoint-initdb.d
+      # named volumes
+      - mongodb:/data/db
+      - mongoconfig:/data/configdb
+    command: mongod
+    networks:
+      - network1
+
+networks:
+  network1:
+    name: microservice-network
+    external: true
+
+volumes:
+  # default dir on Ubuntu: /var/lib/docker/volumes
+  mongodb:
+  mongoconfig:

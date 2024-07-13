@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-configmap
+data:
+  AUTH_SVC_ADDRESS: "auth:5000" # Resolves to auth service IP address in kubernetes cluster
+  PYMONGO_VIDEOS_COLLECTION: "videos"
+  PYMONGO_MP3S_COLLECTION: "mp3s"
+  RABBITMQ_VIDEO_QUEUE: "video"
+  RABBITMQ_MP3_QUEUE: "mp3"
+  MONGO_CLIENT_ADDRESS: "mongodb://admin:admin@mongo-db-service:27017/?authSource=admin"
+  PIKA_CONNECTION_PARAMETER: "rabbitmq"

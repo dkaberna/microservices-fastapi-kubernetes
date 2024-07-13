@@ -1,0 +1,18 @@
+version: '1.0'
+
+services:
+  app:
+    container_name: converter
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    volumes:
+      - ./:/app
+    networks:
+      - network1
+
+
+networks:
+  network1:
+    name: microservice-network
+    external: true

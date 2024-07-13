@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-db-service
+  labels:
+    service: mongo-db-service
+spec:
+  type: ClusterIP
+  ports:
+    - name: tcp-port
+      port: 27017
+      targetPort: 27017
+      protocol: TCP
+  selector:
+    service: mongo-db

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: converter-configmap
+data:
+  PYMONGO_VIDEOS_COLLECTION: "videos"
+  PYMONGO_MP3S_COLLECTION: "mp3s"
+  RABBITMQ_VIDEO_QUEUE: "video"
+  RABBITMQ_MP3_QUEUE: "mp3"
+  #MONGO_CLIENT_ADDRESS: "mongodb://host.minikube.internal:27017/"
+
+  MONGO_CLIENT_ADDRESS: "mongodb://admin:admin@mongo-db-service:27017/?authSource=admin"
+  PIKA_CONNECTION_PARAMETER: "rabbitmq"

@@ -1,0 +1,46 @@
+# This is kubernetes object aka "record of intent" aka yaml spec
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth
+  labels:
+    app: auth
+spec:
+  replicas: 2 # we want two to be deployed
+  selector:
+    matchLabels:
+      app: auth
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: auth
+          image: YOUR DOCKER IMAGE HERE
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: env-file
+              readOnly: true
+              mountPath: "/app/.env"
+              subPath: .env
+          env:
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: host
+                  name: postgres-db-credentials
+            - name: POSTGRES_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: port
+                  name: postgres-db-credentials
+      volumes:
+        - name: env-file
+          secret:
+            secretName: auth-server-credentials

@@ -1,0 +1,24 @@
+# Routest traffic to our actual gateway service / allow traffic to access our gateway endpoint
+# An ingress is a set of rules that allows inbound connections to reach the kubernetes cluster services.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+  annotations:
+    # nginx is the load balance portion of the ingress
+    nginx.ingress.kubernetes.io/proxy-body-size: "0" # allow any body size
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+    #nginx.ingress.kubernetes.io/proxy-max-temp-file-size: "1024m"
+spec:
+  rules:
+    - host: mp3converter.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gateway
+                port:
+                  number: 8080
