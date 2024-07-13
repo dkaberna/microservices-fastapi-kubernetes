@@ -22,11 +22,11 @@ This project has been subsequently enhanced with more robust capabilities based 
 
 ### How to Setup
 The project is broken down into five discrete microservice components - each of which has their own specific configuration and deployment instructions:
-- [Authorization](link)
-- [Gateway](link)
-- [Conversion](link)
-- [Notification](link)
-- [RabbitMQ Server](link)
+- [Authorization](https://github.com/dkaberna/microservices-fastapi-kubernetes/tree/main/auth)
+- [Gateway](https://github.com/dkaberna/microservices-fastapi-kubernetes/tree/main/gateway)
+- [Converter](https://github.com/dkaberna/microservices-fastapi-kubernetes/tree/main/converter)
+- [Notification](https://github.com/dkaberna/microservices-fastapi-kubernetes/tree/main/notification)
+- [RabbitMQ Server](https://github.com/dkaberna/microservices-fastapi-kubernetes/tree/main/rabbit)
 
 ## Local Docker and Kubernetes Deployment
 
