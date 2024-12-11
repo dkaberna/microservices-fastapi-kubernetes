@@ -6,8 +6,6 @@
 ### Project Description
 Purpose of this project is to showcase a fairly complex microservice architecture using the following technology stack:
 
-This project has been subsequently enhanced with more robust capabilities based on the following technology stack:
-
 - ⚡ [**FastAPI**](https://fastapi.tiangolo.com) for the Python backend API.
     - 🔍 [Pydantic](https://docs.pydantic.dev), used by FastAPI, for the data validation and settings management.
     - 💾 [PostgreSQL](https://www.postgresql.org) as the SQL database for user registration and authentication.
