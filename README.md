@@ -4,7 +4,7 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://github.com/tiangolo/fastapi)
 
 ### Project Description
-Purpose of this project is to showcase a fairly complex microservice architecture that was originally inspired by a [freeCodeCamp.org](https://www.freecodecamp.org/) hands-on tutorial and accompanying [YouTube video](https://www.youtube.com/watch?v=hmkF77F9TLw). 
+Purpose of this project is to showcase a fairly complex microservice architecture using the following technology stack:
 
 This project has been subsequently enhanced with more robust capabilities based on the following technology stack:
 
